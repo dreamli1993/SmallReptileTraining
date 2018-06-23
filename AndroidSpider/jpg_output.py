@@ -23,7 +23,11 @@ class jpgOutPut(object):
     def getImg(self,imgList,dirpath):
         x = 0
         for imgurl in imgList:
-            #print ("for test %s" % x) 查看是否走到循环用的print
+            jpgname = imgurl.split('/')[-1]
             #urlretrieve() 方法直接将远程数据下载到本地
-            urllib.request.urlretrieve(imgurl,os.path.join(dirpath,'%s.jpg' % x))
+            jpgpathname = os.path.join(dirpath,jpgname)
+            if os.path.exists(jpgpathname):
+                pass
+            else:
+                urllib.request.urlretrieve(imgurl,jpgpathname)
             x += 1
